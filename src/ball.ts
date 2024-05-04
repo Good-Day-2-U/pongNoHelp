@@ -51,16 +51,23 @@ export class Ball {
 
   ballLogic(speed : number, paddle : any) {
 
-    if(this.xPos >= 780) {
-      this.left = true;
+    if(this.xPos >= 780 || this.right && ((this.xPos >= (paddle.xPos - (paddle.width)) && this.xPos <= (paddle.xPos + paddle.width)) && (this.yPos > paddle.yPos) && (this.yPos < paddle.yPos + paddle.height))) {
+      console.log(`hit left${this.xPos}`)
       this.right = false;
+      this.left = true;
     }
 
-    if((this.xPos <= 0) || ((this.xPos < (paddle.xPos + 22)) && (this.yPos > paddle.yPos) && (this.yPos < paddle.yPos + paddle.height))) {
+    if((this.xPos <= 0) || this.left && ((this.xPos <= (paddle.xPos + (paddle.width + 2)) && this.xPos >= (paddle.xPos + paddle.width)) && (this.yPos > paddle.yPos) && (this.yPos < paddle.yPos + paddle.height))) {
+      console.log(`hit right ${this.xPos}`)
       this.left = false;
       this.right = true;
-      console.log(this.xPos)
     }
+    
+    // if() {
+    //   this.left = true;
+    //   this.right = false;
+    //   console.log(`hit left${paddle.xPos}`)
+    // }
 
     if(this.right) {
       this.xPos += ((speed) / 10)
@@ -92,6 +99,9 @@ export class Ball {
 
     this.element.style.top = `${this.yPos}px`
     this.element.style.left = `${this.xPos}px`
+
+
+    console.log(paddle.element.style.left)
   }
 
 

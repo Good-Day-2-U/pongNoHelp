@@ -65,13 +65,13 @@ class Paddle {
       const move = () => {
         if(up && this.yPos > height - height){
           this.yPos -= this.speed;
-          console.log(this.element.style.top)
-          console.log('Up')
+          // console.log(this.element.style.top)
+          // console.log('Up')
         }
         if(down && this.yPos < height - this.height){
           this.yPos += this.speed;
-          console.log(this.element.style.top)
-          console.log('Down')
+          // console.log(this.element.style.top)
+          // console.log('Down')
         }
         this.element.style.top = `${this.yPos}px`
         this.reqId = requestAnimationFrame(move.bind(this))
@@ -91,7 +91,7 @@ class Paddle {
 
 }
 
-const paddle = new Paddle(100, 250, 20, 100, 'black', 10);
+const paddle = new Paddle(300, 250, 20, 100, 'black', 10);
 
 // const paddle2 = new Paddle(770, 250, 20, 100, 'black', 1);
 
